@@ -40,7 +40,7 @@ Average time: sinusMax_us = (5000us + 4167us)/2 = 4583us, is not critical, use f
 */
 
 #include <Arduino.h>
-#include <Streaming.h> 
+#include <Streaming.h> // http://arduiniana.org/libraries/streaming/
 #include <SPI.h>
 #include <TFT_ILI9341.h> // // https://github.com/Bodmer/TFT_ILI9341 disadvantage: settings in library
 
