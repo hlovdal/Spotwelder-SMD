@@ -1,8 +1,8 @@
 bool sinMaxDisabled = 0; // 0 for production firmware, 1 for test without transformer
-/* 
+/*
 Attention: verify code after upload: ON / OFF
- 
-Todo 
+
+Todo
 Change maximum values, just as selectTFTorientation()
 
 Note: use the latest Arduino software and install the libraries.
@@ -28,13 +28,13 @@ Version 7.0 2-10-2017 only for smd board and ILI9341 240x320 TFT display
 
 Program with FTDI programmer, Extra > Board > Arduino Uno
 
-              <   20ms   >< >sinusMax_us           
-               _____       _____       _____     
-zeroCross   __|     |_____|     |_____|     |__                 
-                              _____________           
-weld       __________________|             |____                                              
+              <   20ms   >< >sinusMax_us
+               _____       _____       _____
+zeroCross   __|     |_____|     |_____|     |__
+                              _____________
+weld       __________________|             |____
 
-T   = 1/(4*50Hz) = 5000us 
+T   = 1/(4*50Hz) = 5000us
 T   = 1/(4*60Hz) = 4167us
 Average time: sinusMax_us = (5000us + 4167us)/2 = 4583us, is not critical, use for 50 and 60Hz
 */
@@ -60,35 +60,35 @@ Switch selectButton(selectButtonPin);
 Switch footSwitch(footSwitchPin);
 
 TFT_ILI9341 tft = TFT_ILI9341();  // pins defined in User_Setup.h
-UpDownValue WeldItemNr = UpDownValue(0, 1, 0, 2); // 3 items 0 1 2 
+UpDownValue WeldItemNr = UpDownValue(0, 1, 0, 2); // 3 items 0 1 2
 
-Menu menu; 
+Menu menu;
 Eeprom eeprom;
 // Set the menu item DEFAULT values: value, step, minValue, maxValue
-MenuItem preweldTimeItem = MenuItem("Preweld, ms", UpDownValue(50, 50, 0, 1000)); 
-MenuItem pauseTimeItem = MenuItem("Pause, ms", UpDownValue(500, 50, 0, 1000)); 
+MenuItem preweldTimeItem = MenuItem("Preweld, ms", UpDownValue(50, 50, 0, 1000));
+MenuItem pauseTimeItem = MenuItem("Pause, ms", UpDownValue(500, 50, 0, 1000));
 MenuItem weldTimeItem = MenuItem("Weld time, ms", UpDownValue(250, 50, 0, 1000));
 MenuItem menuItems[] = {preweldTimeItem, pauseTimeItem, weldTimeItem};
 
 bool continuously;
-unsigned orientation_addr, orientation=3; 
+unsigned orientation_addr, orientation=3;
 
-void setup() 
+void setup()
 { Serial.begin(9600);
   setpinModes();
-  pollAll(); 
-  blinkLed(ledPin, 3); // is a delay too 
+  pollAll();
+  blinkLed(ledPin, 3); // is a delay too
   pollAll(); // do after the blinkLed() delay
   eeprom.init();
   eeprom.read(); // set the menu with the stored EEPROM values
   selectTFTorientation(); // do after eeprom.init and before TFTinit()
-  selectContinuously();  
-  menu.TFTinit();  
+  selectContinuously();
+  menu.TFTinit();
   printValuesToSerial();
-  menu.displayStart(); 
+  menu.displayStart();
 }
-  
-void loop() 
+
+void loop()
 { pollAll();
   menu.control();
   weldControl();

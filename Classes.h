@@ -9,7 +9,7 @@ class UpDownValue
     int up();
     int down();
     operator int();
-   
+
     int value, step, minValue, maxValue;
 };
 
@@ -18,9 +18,9 @@ class UpDownValue
 class MenuItem
 { public:
     MenuItem(String name, UpDownValue value);
-        
+
     String name;
-    UpDownValue upDownVal; 
+    UpDownValue upDownVal;
 };
 
 // ---------------------------------------------------------------------------
@@ -31,7 +31,7 @@ class Menu
     void control();
     void displayDot(bool on);
     void TFTinit();
-     
+
   private:
     void displayName(int itemNr, String &name);
     void displayValue(int itemNr, int value, bool focus, bool edit);
@@ -39,7 +39,7 @@ class Menu
     void displayContinuously();
 
     bool editValueMode=0;
-    const int textLeft = 20, fontSize=4, fontHeight=26; 
+    const int textLeft = 20, fontSize=4, fontHeight=26;
     const int vertOffset=3; // 240-9*26)/2
 };
 

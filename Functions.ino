@@ -12,9 +12,9 @@ void selectContinuously()
   unsigned long start_ms = millis();
   pollAll();
   delay(switchStable_ms);
-  
+
   while(weldButton.on())
-  { pollAll();     
+  { pollAll();
     if(!weldButton.on()) break;
   }
   if(millis()-start_ms > weldButtonPressTime) continuously = 1;
@@ -24,7 +24,7 @@ void weldControl()
 { if(continuously) weldContinuously();
   else if(weldButton.pushed() || footSwitch.pushed()) weldCyclus(menuItems[2].upDownVal);
 }
-  
+
 void weldCyclus(int weldTime_ms)
 { pulseWeld(menuItems[0].upDownVal);
   delay(menuItems[1].upDownVal);
@@ -32,30 +32,30 @@ void weldCyclus(int weldTime_ms)
 }
 
 void weldContinuously()
-{ if(weldButton.pushed()) sinusMax(); // do only once 
+{ if(weldButton.pushed()) sinusMax(); // do only once
   weld(weldButton.on());
 }
 
 void pulseWeld(int ms)
 { sinusMax();
   if(ms) weld(1); // avoid short displayDot flash
-  delay(ms); 
+  delay(ms);
   weld(0);
-  Serial << ms << endl; 
+  Serial << ms << endl;
 }
 
-void weld(bool b) 
+void weld(bool b)
 { menu.displayDot(b);
   digitalWrite(weldPin, b);
-  if(b) Serial << "w "; 
+  if(b) Serial << "w ";
 }
 
 void sinusMax()
-{ Serial << "sinusMax "; 
+{ Serial << "sinusMax ";
   if(sinMaxDisabled) return;
   while(digitalRead(zeroCrossPin));
   while(!digitalRead(zeroCrossPin));
-  delayMicroseconds(sinusMax_us); // prevent high inrush current, turn-on at the sinus max 
+  delayMicroseconds(sinusMax_us); // prevent high inrush current, turn-on at the sinus max
 }
 
 void setpinModes()
@@ -78,7 +78,7 @@ void pollAll()
 }
 
 void printValuesToSerial()
-{  Serial << "\npreweld " << menuItems[0].upDownVal << "ms, pause " << menuItems[1].upDownVal << "ms, weldTime " 
+{  Serial << "\npreweld " << menuItems[0].upDownVal << "ms, pause " << menuItems[1].upDownVal << "ms, weldTime "
    << menuItems[2].upDownVal << "ms, continuously " << continuously << ", Orientation " << orientation << endl;
 }
 
