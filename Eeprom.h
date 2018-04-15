@@ -6,5 +6,9 @@ public:
   void write();
   bool initialized();
   
-  unsigned storedInitValue_addr, preweld_ms_addr, pause_ms_addr, weld_ms_addr; // EEPROM addresses
+  // EEPROM addresses
+  unsigned int storedInitValue_addr;
+  unsigned int preweld_ms_addr;
+  unsigned int pause_ms_addr;
+  unsigned int weld_ms_addr;
 };
