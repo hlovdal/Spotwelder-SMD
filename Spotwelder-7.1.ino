@@ -45,7 +45,7 @@ Average time: sinusMax_us = (5000us + 4167us)/2 = 4583us, is not critical, use f
 #include <TFT_ILI9341.h> // // https://github.com/Bodmer/TFT_ILI9341 disadvantage: settings in library
 
 #include <Albert.h> // https://github.com/avandalen/Albert-Arduino-library
-#include <Switch.h> // https://github.com/avandalen/avdweb_Switch
+#include <avdweb_Switch.h> // https://github.com/avandalen/avdweb_Switch
 #include <EEPROMex.h>
 #include "Definitions.h"
 #include "Classes.h"
