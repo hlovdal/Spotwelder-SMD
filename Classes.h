@@ -8,7 +8,7 @@ class UpDownValue
     UpDownValue(int value, int step, int minValue, int maxValue);
     int up();
     int down();
-    UpDownValue::operator int();
+    operator int();
    
     int value, step, minValue, maxValue;
 };
