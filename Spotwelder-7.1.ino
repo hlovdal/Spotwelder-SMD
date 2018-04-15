@@ -57,7 +57,7 @@ Switch weldButton(weldButtonPin);
 Switch upButton(upButtonPin);
 Switch downButton(downButtonPin);
 Switch selectButton(selectButtonPin);
-Switch foodSwitch(foodSwitchPin);
+Switch footSwitch(footSwitchPin);
 
 TFT_ILI9341 tft = TFT_ILI9341();  // pins defined in User_Setup.h
 UpDownValue WeldItemNr = UpDownValue(0, 1, 0, 2); // 3 items 0 1 2 

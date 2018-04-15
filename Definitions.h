@@ -7,7 +7,7 @@ const byte weldButtonPin = 7;
 const byte upButtonPin = 9;
 const byte downButtonPin = 8;
 const byte selectButtonPin = 10;
-const byte foodSwitchPin = A5;
+const byte footSwitchPin = A5;
 const byte zeroCrossPin = 2;
 
 const byte TFT_RSTpin = A1; // set in user.h, todo: do in TFT_ILI9341 constructor

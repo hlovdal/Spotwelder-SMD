@@ -22,7 +22,7 @@ void selectContinuously()
 
 void weldControl()
 { if(continuously) weldContinuously();
-  else if(weldButton.pushed() || foodSwitch.pushed()) weldCyclus(menuItems[2].upDownVal); 
+  else if(weldButton.pushed() || footSwitch.pushed()) weldCyclus(menuItems[2].upDownVal);
 }
   
 void weldCyclus(int weldTime_ms)
@@ -66,7 +66,7 @@ void setpinModes()
   pinMode(weldPin, OUTPUT);
   pinMode(ledPin, OUTPUT); // is also done in blinkLed
   pinMode(zeroCrossPin, INPUT);
-  pinMode(foodSwitchPin, INPUT_PULLUP);
+  pinMode(footSwitchPin, INPUT_PULLUP);
 }
 
 void pollAll()
@@ -74,7 +74,7 @@ void pollAll()
   upButton.poll();
   downButton.poll();
   selectButton.poll();
-  foodSwitch.poll();
+  footSwitch.poll();
 }
 
 void printValuesToSerial()
